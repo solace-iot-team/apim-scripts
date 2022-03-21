@@ -1,0 +1,28 @@
+{
+  "name": "aps-script-external-business-groups",
+  "version": "0.0.1",
+  "description": "Scripts for managing external business groups on the apim-portal-server.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "import": "npm run build && . ./source.env.sh && node dist/src/import.js"
+  },
+  "author": "Solace Corporation",
+  "contributors": [
+    {
+      "name": "Ricardo Gomez-Ulmke",
+      "email": "ricardo.gomez-ulmke@solace.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@solace-iot-team/apim-connector-openapi-node": "^0.6.5",
+    "@solace-iot-team/apim-server-openapi-node": "^0.0.19"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
