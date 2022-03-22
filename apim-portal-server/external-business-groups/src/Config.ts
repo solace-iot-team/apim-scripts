@@ -64,6 +64,7 @@ class Config {
 
   public getOrganizationId() { return this.organizationId; }
   public getExternalSystemId() { return this.externalSystemId; }
+  public getBusinessGroupImportFilePath() { return this.businessGroupImportFilePath; }
 
 }
 

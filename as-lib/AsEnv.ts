@@ -1,22 +1,8 @@
 
-import fs from 'fs';
-import path from 'path';
+import AsUtils from './AsUtils';
 
 
 class AsEnv {
-
-  private validateFilePathHasReadPermission = (filePath: string): string | undefined => {
-    try {
-      const absoluteFilePath = path.resolve(filePath);
-      // console.log(`validateFilePathWithReadPermission: absoluteFilePath=${absoluteFilePath}`);
-      fs.accessSync(absoluteFilePath, fs.constants.R_OK);
-      return absoluteFilePath;
-    } catch (e) {
-      // console.log(`validateFilePathWithReadPermission: filePath=${filePath}`);
-      // console.log(`e=${e}`);
-      return undefined;
-    }
-  }
 
   public getMandatoryEnvVarValueAsString = (envVarName: string): string => {
     const funcName = 'getMandatoryEnvVarValue';
@@ -40,7 +26,7 @@ class AsEnv {
     const funcName = 'getMandatoryEnvVarValueAsFilePathWithReadPermissions';
     const logName = `${AsEnv.name}.${funcName}()`;
     const value: string = this.getMandatoryEnvVarValueAsString(envVarName);
-    const absoluteFilePath: string | undefined = this.validateFilePathHasReadPermission(value);
+    const absoluteFilePath: string | undefined = AsUtils.validateFilePathHasReadPermission(value);
     if(absoluteFilePath === undefined) {
       throw new Error(`${logName}: file path: ${value} cannot be found or does not have read permissions.`);
     }
