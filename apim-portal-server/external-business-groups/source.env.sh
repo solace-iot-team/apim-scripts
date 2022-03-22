@@ -1,1 +1,0 @@
-./source.env.aws-demo.sh
