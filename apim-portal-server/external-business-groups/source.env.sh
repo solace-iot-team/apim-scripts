@@ -1,1 +1,1 @@
-source.env.local.sh
+./source.env.aws-demo.sh
