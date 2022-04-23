@@ -59,19 +59,22 @@ const create_user_apps = async() => {
     return apiProduct.name;
   });
 
-  const userId1: string = "user.one@aps.test";
-  const userId2: string = "user.two@aps.test";
-  const appId1: string = 'external-user-app-1_at_' + Date.now();
-  const appId2: string = 'external-user-app-2_at_' + Date.now();
-  const teamId1: string = 'external-team-app-1_at_' + Date.now();
-  const teamId2: string = 'external-team-app-2_at_' + Date.now();
+  const userId1: string = "user.one@devel.test";
+  const userId2: string = "user.two@devel.test";
+  const userAppId1: string = 'external-user-app-1_at_' + Date.now();
+  const userAppId2: string = 'external-user-app-2_at_' + Date.now();
+  
+  const teamId1: string = "team-one";
+  const teamId2: string = "team-two";
+  const teamAppId1: string = 'external-team-app-1_at_' + Date.now();
+  const teamAppId2: string = 'external-team-app-2_at_' + Date.now();
 
 
   const expiresIn: number = 3600; // 1 hour
 
   // create user app 1
   const appRequestBody: App = {
-    name: appId1,
+    name: userAppId1,
     expiresIn: expiresIn,
     apiProducts: apiProductIdList,
     credentials: {}
@@ -82,21 +85,21 @@ const create_user_apps = async() => {
     requestBody: appRequestBody
   });
   // create user app 2
-  appRequestBody.name = appId2;
+  appRequestBody.name = userAppId2;
   await AppsService.createDeveloperApp({
     organizationName: Config.getOrganizationId(),
     developerUsername: userId2,
     requestBody: appRequestBody
   });
   // create team app 1
-  appRequestBody.name = teamId1;
+  appRequestBody.name = teamAppId1;
   await AppsService.createTeamApp({
     organizationName: Config.getOrganizationId(),
     teamName: teamId1,
     requestBody: appRequestBody
   });
   // create team app 2
-  appRequestBody.name = teamId2;
+  appRequestBody.name = teamAppId2;
   await AppsService.createTeamApp({
     organizationName: Config.getOrganizationId(),
     teamName: teamId2,
