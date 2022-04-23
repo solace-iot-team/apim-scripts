@@ -1,5 +1,5 @@
-import AsApsOpenApiClient, { TASApsOpenApiConfig } from "../as-lib/AsApsOpenApiClient";
-import AsEnv from "../as-lib/AsEnv";
+import { APSConnectorClientConfig } from "@solace-iot-team/apim-server-openapi-node";
+import AsConnectorOpenApiClient from "./AsConnectorOpenApiClient";
 
 enum EEnvVarsConnectorOpenApiClient {
   HOST = "HOST",
@@ -16,21 +16,14 @@ class AsConnectorOpenApiClientConfig {
     return `${this.envVarPrefix}_${apssEnvVars}`;
   }
   
-  public initialize() {
+  public initialize({ apsConnectorClientConfig }:{
+    apsConnectorClientConfig: APSConnectorClientConfig;
+  }): void {
     const funcName = 'initialize';
     const logName = `${AsConnectorOpenApiClientConfig.name}.${funcName}()`;
 
-    const asApsOpenApiConfig: TASApsOpenApiConfig = {
-      host: AsEnv.getMandatoryEnvVarValueAsString(this.create_envVarName(EEnvVarsConnectorOpenApiClient.HOST)),
-      port: AsEnv.getMandatoryEnvVarValueAsNumber(this.create_envVarName(EEnvVarsConnectorOpenApiClient.PORT)),
-      protocol: AsEnv.getMandatoryEnvVarValueAsString(this.create_envVarName(EEnvVarsConnectorOpenApiClient.PROTOCOL)),
-      user: AsEnv.getMandatoryEnvVarValueAsString(this.create_envVarName(EEnvVarsConnectorOpenApiClient.USER)),
-      pwd: AsEnv.getMandatoryEnvVarValueAsString(this.create_envVarName(EEnvVarsConnectorOpenApiClient.PWD)),
-    };
-    // this.asApsOpenApiClientConfig = asApsOpenApiConfig;
-    AsApsOpenApiClient.initialize({
-      asApsOpenApiConfig: asApsOpenApiConfig
-    });
+    AsConnectorOpenApiClient.initialize({ apsConnectorClientConfig: apsConnectorClientConfig });
+
   }
 }
 

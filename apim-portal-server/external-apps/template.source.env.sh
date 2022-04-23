@@ -7,7 +7,7 @@
 
 scriptDir=$(pwd)
 
-export ORGANIZATION_ID="{organization-id}"
+export APSS_EXTERNAL_APPS_ORGANIZATION_ID="{organization-id}"
 
 # Show values
-env | grep APIM_ENV
+env | grep APSS

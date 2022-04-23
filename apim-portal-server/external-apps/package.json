@@ -1,0 +1,30 @@
+{
+  "name": "aps-script-external-apps",
+  "version": "0.0.1",
+  "description": "Scripts for creating external apps in the apim-connector.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "main": "npm run build && . ./source.env.sh && node dist/src/main.js"
+  },
+  "author": "Solace Corporation",
+  "contributors": [
+    {
+      "name": "Ricardo Gomez-Ulmke",
+      "email": "ricardo.gomez-ulmke@solace.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@solace-iot-team/apim-connector-openapi-node": "^0.7.11",
+    "@solace-iot-team/apim-server-openapi-node": "^0.0.19",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@types/uuid": "^8.3.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
