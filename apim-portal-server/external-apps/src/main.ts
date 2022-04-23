@@ -52,8 +52,7 @@ const create_user_apps = async() => {
     pageNumber: 1,
     pageSize: 2
   });
-
-  console.log(`${logName}: apiProductList.length=${apiProductList.length}`);
+  // console.log(`${logName}: apiProductList.length=${apiProductList.length}`);
 
   const apiProductIdList: Array<string> = apiProductList.map( (apiProduct: APIProduct) => {
     return apiProduct.name;
